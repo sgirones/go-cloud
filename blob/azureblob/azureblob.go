@@ -883,7 +883,7 @@ func (b *bucket) NewTypedWriter(ctx context.Context, key string, contentType str
 		md[e] = escape.URLEscape(v)
 	}
 	uploadOpts := &azblob.UploadStreamOptions{
-		BlockSize:   opts.BufferSize,
+		BlockSize:   int64(opts.BufferSize),
 		Concurrency: opts.MaxConcurrency,
 		Metadata:    md,
 		HTTPHeaders: &azblobblob.HTTPHeaders{
